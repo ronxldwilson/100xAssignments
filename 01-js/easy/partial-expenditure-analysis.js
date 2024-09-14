@@ -14,7 +14,21 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  // First we need to find all the categories that exist
+  // and then we can find the total for each of them
+  let category=[];
+  for(let i = 0;i<transactions.length;i++){
+    category.push(transactions[i].category);
+  }
+  let filtered = category.filter((item,index) => arr.indexOf(item) === index)
+
+  for(let i=0;i<transactions.length;i++){
+    let itemCost = transactions[i].price;
+    
+  }
+
+
+  return ;
 }
 
 module.exports = calculateTotalSpentByCategory;
