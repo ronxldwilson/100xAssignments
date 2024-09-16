@@ -44,6 +44,16 @@
   
   const app = express();
   
+  app.use(express.json());
   app.use(bodyParser.json());
+
+  app.get('/todos',)
+
+  app.use('/todos',(err,req,res,data)=>{
+    if(err)
+      
+  });
+
   
   module.exports = app;
+  app.listen(3000);

@@ -18,4 +18,27 @@ const path = require('path');
 const app = express();
 
 
+
+app.get('/files',(req,res)=>{
+  console.log(1);
+  fs.readdir('./files/',(err,files)=>{
+    console.log(1);
+    if(err)
+      console.log("Something went wrong");
+    else 
+      res.json(files);
+  })
+})
+
+app.get('/files/:filename',(req,res)=>{  
+  const fileName = req.params.filename;
+  const path = './files/'+fileName;
+
+  fs.readFile(path,'binary',(err,data)=>{
+    return res.send(data);
+  })
+})
+
+app.listen(3000);
+
 module.exports = app;
