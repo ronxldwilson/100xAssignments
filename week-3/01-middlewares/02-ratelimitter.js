@@ -12,6 +12,12 @@ const app = express();
 // clears every one second
 
 let numberOfRequestsForUser = {};
+
+app.use((req,res,next)=>{
+  console.log(req.query.user-id);
+  next();
+})
+
 setInterval(() => {
     numberOfRequestsForUser = {};
 }, 1000)
