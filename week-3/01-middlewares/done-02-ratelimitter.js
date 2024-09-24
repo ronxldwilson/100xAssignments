@@ -14,8 +14,18 @@ const app = express();
 let numberOfRequestsForUser = {};
 
 app.use((req,res,next)=>{
-  console.log(req.query.user-id);
+  let user = req.headers['user-id'];
+  console.log(user);
+  if(!numberOfRequestsForUser[user])
+      numberOfRequestsForUser[user] = 1;
+  else
+    numberOfRequestsForUser[user] +=1 ; 
+
+  if(numberOfRequestsForUser[user]>5)
+    return res.status(404).json({ error: 'Too many requests' });
+  
   next();
+  
 })
 
 setInterval(() => {
