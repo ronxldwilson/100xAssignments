@@ -15,6 +15,12 @@ const jwtPassword = 'secret';
  */
 function signJwt(username, password) {
     // Your code here
+    if(password.length < 6)
+        return null;
+
+    //This is to sign the token if everything is correct 
+    let token = jwt.sign({username,password},jwtPassword);
+    return token;
 }
 
 /**
@@ -27,6 +33,10 @@ function signJwt(username, password) {
  */
 function verifyJwt(token) {
     // Your code here
+    let flag = false;
+    flag = jwt.verify(token,jwtPassword);
+
+    return flag;
 }
 
 /**
@@ -38,6 +48,12 @@ function verifyJwt(token) {
  */
 function decodeJwt(token) {
     // Your code here
+    try{
+        jwt.decode(token);
+    }
+    catch{
+        return false;
+    }
 }
 
 
